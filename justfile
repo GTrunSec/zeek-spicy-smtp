@@ -1,4 +1,3 @@
-
 compile:
     spicyz -D zeek analyzer/analyzer.spicy analyzer/analyzer.evt analyzer/zeek_analyzer.spicy -o smtp.hlto
 test:
