@@ -23,17 +23,5 @@ jobs:
           pushFilter: '(-source$|nixpkgs\.tar\.gz$)'
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Check Zeek Plugins
-        run: nix -Lv develop --command zeek -N
-
-      - name: Check Traces File
-        run: nix -Lv develop --command std //main/entrypoints/check_trace:run
-
-      - name: Build Doc
-        run: nix -Lv develop .#doc --command mdbook build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
-        with:
-          branch: gh-pages
-          folder: ./docs/book
+      - name: Build Spicy
+        run: nix develop github:GTrunSec/hunting-lab#build --refresh --command just compile
