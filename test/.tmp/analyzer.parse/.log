@@ -1,0 +1,2 @@
+spicyc ${DIST}/analyzer/analyzer.spicy -j -d -o test.hlto (expect success)
+printf "test string" | spicy-dump -p @ns@::@name@ test.hlto 2>&1 >> output (expect success)

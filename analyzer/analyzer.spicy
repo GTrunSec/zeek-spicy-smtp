@@ -1,0 +1,30 @@
+module SMTP_SPICY;
+
+import spicy;
+
+public type SMTPMessages = unit {
+    messages: Message[];
+};
+
+
+public type Message = unit {
+    length: uint16 &requires=$$>=20;
+    data: Content[];
+};
+
+public type Content = unit {
+    data: bytes &chunked &eod {
+        if ( |self.data| > 0 ) {
+            self.have_content = True;
+            # Bro::file_data_in(self.data);
+            }
+         }
+
+    var have_content: bool = False;
+};
+
+
+## TODO: 4.1.1.4 DATA (DATA)
+
+
+## 4.2.1 Reply Code

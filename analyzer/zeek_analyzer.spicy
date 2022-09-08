@@ -1,0 +1,10 @@
+module Zeek_SMTP;
+
+import zeek;
+
+import SMTP_SPICY;
+import zeek;
+
+on SMTP_SPICY::Message::%done {
+    zeek::confirm_protocol();
+}

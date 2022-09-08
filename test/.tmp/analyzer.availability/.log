@@ -1,0 +1,1 @@
+zeek -NN | grep -qi ANALYZER_SPICY_@NAME@ (expect success)

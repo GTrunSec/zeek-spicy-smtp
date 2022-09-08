@@ -1,0 +1,10 @@
+protocol analyzer spicy::SMTP_SPICY over tcp:
+    parse with SMTP_SPICY::SMTPMessages,
+    # parse responder with SMTP_SPICY::Replies,
+    ports {25/tcp, 587/tcp},
+    replaces SMTP
+    ;
+
+import Zeek_SMTP;
+
+on SMTP_SPICY::Content::data -> event SMTP_SPICY::smtp_data($conn, $is_orig, |self.data|, self.data);

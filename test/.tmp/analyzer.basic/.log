@@ -1,0 +1,1 @@
+zeek -r ${TRACES}/http.pcap /home/gtrun/ghq/github.com/Boomboomdunce/zeek-spicy-smtp/test/.tmp/analyzer.basic/basic.zeek (expect success)
